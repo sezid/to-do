@@ -1,0 +1,22 @@
+
+.table-header{
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+    background-color: tomato;
+    margin: 20px auto;
+    width: 75%;
+    border: 1px solid black;
+}
+
+.table-header ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    background: transparent;
+}
+
+.table-header li{
+    color: rgb(255, 255, 255);
+    background: transparent;
+}
