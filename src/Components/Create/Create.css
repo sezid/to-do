@@ -1,27 +1,16 @@
 .add-field {
     display: flex;
-    margin: auto;
-    
-}
-
-.add-field ul{
-    display: flex;
     flex-direction: row;
-    list-style-type: none;
     font-size: 20px;
-    margin: 20px auto;
-    
+    justify-content: center;
 }
-
-
-
 
 
  .add-field input{
+    display: flex;
     font-size: 16px;
-
     padding: 10px 0px 10px 10px;
-    width: 90%;
+    width: 60%;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.616);
 }
@@ -32,8 +21,8 @@
     height: 40px;
     font-size: 20px;
     cursor: pointer;
-    transition: background-color;
     border-radius: 5px;
+    margin-left: 10px;
 }
 
 .add-field button:hover {

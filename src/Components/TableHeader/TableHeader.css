@@ -19,4 +19,9 @@
 .table-header li{
     color: rgb(255, 255, 255);
     background: transparent;
+    cursor: pointer;
+}
+
+.table-header li:hover{
+    color: black;
 }

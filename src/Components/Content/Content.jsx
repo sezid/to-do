@@ -1,32 +1,50 @@
-import React, {useState, useEffect} from 'react'
-import './Content.css'
+import React from 'react';
+import './Content.css';
 
-
-const Content = () => {
-
-  const [tasks, setTasks]=useState([]);
-
-  useEffect(() => {
-    fetch('/tasks.json')  
-      .then((response) => response.json())
-      .then((data) => setTasks(data))  
-      .catch((error) => console.error('Error fetching tasks:', error));
-  }, []);
-
+const Content = ({tasks, setTask, find, search}) => {
+  
+  // console.log(tasks)
   return (
+    
     <div className='content'>
-      {tasks.map((task) => ( 
-        <ul>
-              <li key={task.id}>
-                {task.task}
+
+            {tasks
+            .filter((task) => {
+
+              if (search) {
+                return task.task.toLowerCase().includes(search.toLowerCase());
+              }
+
+              if (find === 'current') {
+                return task.completed === false; 
+              } else if (find === 'completed') {
+                return task.completed === true;
                 
-              </li>
-              <input className='checkbox' type="checkbox" />  
-        </ul> 
-        ))} 
-      
+              }
+              return (task.completed===true || task.completed===false); 
+            })
+            .map((task) => ( 
+              <ul key={task.id}>  
+                <li>  
+                  {task.task}  
+                </li>  
+                <input   
+                  className='checkbox'   
+                  type="checkbox"   
+                  checked={task.completed}   
+                  onChange={() => {  
+                    const updatedTasks = tasks.map((t) =>   
+                      t.id === task.id ? { ...t, completed: !t.completed } : t  
+                    );  
+                    setTask(updatedTasks); 
+                  }}   
+                />  
+              </ul>  
+            ))}
+
+
     </div>
-  )
-}
-// 
-export default Content
+  );
+};
+
+export default Content;
